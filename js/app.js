@@ -16,7 +16,9 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  likedPostsId.plus(id);
+
+  likedPostsId.plush(id);
+  // likedPostsId.plus(id);
   showPosts(posts);
 };
 
@@ -40,6 +42,7 @@ const switchTab = (id) => {
     document.getElementById("posts").style.display = "grid";
     document.getElementById("liked").style.display = "none";
     document.getElementById("reported").style.display = "none";
+
   } else if (id === "liked") {
     document.getElementById("liked").style.display = "block";
     document.getElementById("posts").style.display = "none";
@@ -52,6 +55,7 @@ const switchTab = (id) => {
     document.getElementById("liked").style.display = "none";
 
     displayReportedPosts();
+
   }
 };
 
@@ -155,11 +159,13 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
+  document.getElementById("reported").innerHTML = ''
   const reportedPosts = getReportedPosts();
-  posts.forEach((post) => {
+  reportedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("reported").appendChild(div);
   });
+
 };
 
 const loadPosts = async () => {
